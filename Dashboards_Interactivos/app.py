@@ -3,6 +3,7 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import numpy as np
+import os
 
 # Configuración de página
 st.set_page_config(page_title="Elite Scouting System", page_icon="⚽", layout="wide")
@@ -22,7 +23,9 @@ st.markdown('<div class="sub-header">Data-Driven Player Recruitment Dashboard</d
 # Cargar Datos
 @st.cache_data
 def load_data():
-    df = pd.read_csv("players_data.csv")
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    file_path = os.path.join(current_dir, "players_data.csv")
+    df = pd.read_csv(file_path)
     return df
 
 df = load_data()
